@@ -274,6 +274,20 @@ test('Layers should follow the expected structure', () async {
 });
 ```
 
+### Use `ArchRule` Type
+
+Use the `ArchRule` type to define custom rules:
+
+```dart
+test('Custom rule example', () async {
+  ArchRule rule = classes()
+    .inPackage('presentation')
+    .shouldNotDependOn('infra');
+
+  await rule.check();
+});
+```
+
 ## Contributing
 
 Contributions to ArchDart are welcome! Please submit issues or pull requests to the project repository. When contributing, ensure that:
