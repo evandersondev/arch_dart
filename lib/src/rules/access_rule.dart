@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:path/path.dart' as p;
-import 'package:yaml/yaml.dart';
 
 import '../utils/analyzer_utils.dart';
 import '../utils/rule_base.dart';
@@ -46,23 +43,23 @@ class AccessRule extends ArchRule {
     }
   }
 
-  String? _getPackageFromPath(String path, String rootDir) {
-    final relativePath = p.relative(path, from: rootDir);
-    final parts = p.split(relativePath);
-    if (parts.isEmpty) return null;
-    return parts.first;
-  }
+  // String? _getPackageFromPath(String path, String rootDir) {
+  //   final relativePath = p.relative(path, from: rootDir);
+  //   final parts = p.split(relativePath);
+  //   if (parts.isEmpty) return null;
+  //   return parts.first;
+  // }
 
-  Future<String> _getProjectName(String rootDir) async {
-    try {
-      final pubspecFile = File(p.join(rootDir, '../pubspec.yaml'));
-      if (!pubspecFile.existsSync()) return '';
-      final content = await pubspecFile.readAsString();
-      final yaml = loadYaml(content) as Map;
-      return yaml['name'] as String? ?? '';
-    } catch (e) {
-      print('Erro ao ler pubspec.yaml: $e');
-      return '';
-    }
-  }
+  // Future<String> _getProjectName(String rootDir) async {
+  //   try {
+  //     final pubspecFile = File(p.join(rootDir, '../pubspec.yaml'));
+  //     if (!pubspecFile.existsSync()) return '';
+  //     final content = await pubspecFile.readAsString();
+  //     final yaml = loadYaml(content) as Map;
+  //     return yaml['name'] as String? ?? '';
+  //   } catch (e) {
+  //     print('Erro ao ler pubspec.yaml: $e');
+  //     return '';
+  //   }
+  // }
 }

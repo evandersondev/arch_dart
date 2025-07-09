@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_initializing_formals
+
 enum ScopeType {
   package,
   folder,

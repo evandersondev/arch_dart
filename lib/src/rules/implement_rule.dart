@@ -1,5 +1,4 @@
 import 'package:analyzer/dart/ast/ast.dart';
-import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:path/path.dart' as p;
 
 import '../utils/analyzer_utils.dart';
@@ -126,12 +125,12 @@ class ImplementRule extends ArchRule {
   }
 }
 
-class _TypeNameVisitor extends GeneralizingAstVisitor<void> {
-  String? typeName;
+// class _TypeNameVisitor extends GeneralizingAstVisitor<void> {
+//   String? typeName;
 
-  @override
-  void visitSimpleIdentifier(SimpleIdentifier node) {
-    typeName ??= node.name;
-    super.visitSimpleIdentifier(node);
-  }
-}
+//   @override
+//   void visitSimpleIdentifier(SimpleIdentifier node) {
+//     typeName ??= node.name;
+//     super.visitSimpleIdentifier(node);
+//   }
+// }
