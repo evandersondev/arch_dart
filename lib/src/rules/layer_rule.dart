@@ -156,29 +156,29 @@ class LayerRule extends ArchRule {
     return imports;
   }
 
-  bool _isCommonDirectory(String dirName) {
-    const commonDirs = {
-      '.dart_tool',
-      '.git',
-      '.idea',
-      '.vscode',
-      'build',
-      'node_modules',
-      'test',
-      'tests',
-      'example',
-      'examples',
-      'doc',
-      'docs',
-      'assets',
-      'web',
-      'android',
-      'ios',
-      'linux',
-      'macos',
-      'windows',
-    };
+  // bool _isCommonDirectory(String dirName) {
+  //   const commonDirs = {
+  //     '.dart_tool',
+  //     '.git',
+  //     '.idea',
+  //     '.vscode',
+  //     'build',
+  //     'node_modules',
+  //     'test',
+  //     'tests',
+  //     'example',
+  //     'examples',
+  //     'doc',
+  //     'docs',
+  //     'assets',
+  //     'web',
+  //     'android',
+  //     'ios',
+  //     'linux',
+  //     'macos',
+  //     'windows',
+  //   };
 
-    return commonDirs.contains(dirName) || dirName.startsWith('.');
-  }
+  //   return commonDirs.contains(dirName) || dirName.startsWith('.');
+  // }
 }
