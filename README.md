@@ -1,5 +1,5 @@
 <p align="center">
-  <!-- <img src="./assets/logo.png" width="200px" align="center" alt="Darto logo" /> -->
+  <img src="./assets/logo.png" width="200px" align="center" alt="Darto logo" />
   <h1 align="center">ArchDart</h1>
   <br>
   <p align="center">

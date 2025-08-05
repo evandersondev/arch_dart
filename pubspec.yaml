@@ -1,6 +1,6 @@
 name: arch_dart
 description: Dart/Flutter Architectural Testing Framework inspired by ArchUnit for Java.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/evandersondev/arch_dart
 license: MIT
 
