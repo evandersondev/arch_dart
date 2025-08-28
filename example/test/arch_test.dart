@@ -32,7 +32,7 @@ void main() {
     test('Repositories should end with Repository', () async {
       ArchRule rule = classes()
           .inFolder('infra/repositories')
-          .shouldHaveNameEndingWith('Repository');
+          .shouldHaveNameEndingWith('RepositoryImpl');
 
       await rule.check();
     });
