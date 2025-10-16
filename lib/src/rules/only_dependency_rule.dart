@@ -25,7 +25,7 @@ class OnlyDependencyRule extends ArchRule {
 
   @override
   Future<void> check() async {
-    final unitsWithPath = await parseDirectoryWithPaths('.');
+    final unitsWithPath = await parseDirectoryWithPaths('lib');
     final violations = <String>[];
 
     // Detectar o nome do projeto

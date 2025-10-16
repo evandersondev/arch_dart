@@ -12,7 +12,7 @@ class CyclicDependencyRule extends ArchRule {
 
   @override
   Future<void> check() async {
-    final unitsWithPath = await parseDirectoryWithPaths('.');
+    final unitsWithPath = await parseDirectoryWithPaths('lib');
     final dependencies = <String, Set<String>>{};
 
     // Build dependency graph

@@ -173,14 +173,14 @@ void main() {
   });
 
   group('Layer Organization', () {
-    // test('Main layers should exist', () async {
-    //   await layers(['presentation', 'domain', 'infra', 'core'])
-    //       .onlyStructure()
-    //       .requireAllLayers()
-    //       .check();
-    // });
+    test('Project structure should be exactly as defined', () async {
+      await layers(['presentation', 'domain', 'infra', 'core'])
+          .onlyStructure()
+          .requireAllLayers()
+          .check();
+    });
 
-    test('Layers should follow the expected structure', () async {
+    test('Existing layers should be among the allowed ones', () async {
       await layers(['presentation', 'domain', 'infra', 'core'])
           .onlyStructure()
           .allowMissingLayers()

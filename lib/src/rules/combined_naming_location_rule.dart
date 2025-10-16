@@ -22,7 +22,7 @@ class CombinedNamingLocationRule extends ArchRule {
 
   @override
   Future<void> check() async {
-    final unitsWithPath = await parseDirectoryWithPaths('.');
+    final unitsWithPath = await parseDirectoryWithPaths('lib');
     final violations = <String>[];
     final matchingClasses = <String>[];
 

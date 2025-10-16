@@ -25,7 +25,7 @@ class ExportRule extends ArchRule {
 
   @override
   Future<void> check() async {
-    final unitsWithPath = await parseDirectoryWithPaths('.');
+    final unitsWithPath = await parseDirectoryWithPaths('lib');
     final violations = <String>[];
 
     if (targetFile != null) {

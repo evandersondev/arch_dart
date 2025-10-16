@@ -13,7 +13,7 @@ class HaveFieldRule extends ArchRule {
 
   @override
   Future<void> check() async {
-    final unitsWithPath = await parseDirectoryWithPaths('.');
+    final unitsWithPath = await parseDirectoryWithPaths('lib');
 
     for (final entry in unitsWithPath.entries) {
       final path = p.normalize(entry.key);

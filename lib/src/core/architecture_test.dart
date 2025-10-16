@@ -16,7 +16,7 @@ class ArchitectureTest {
   Future<void> check() async {
     int filesChecked = 0;
     int violationsFound = 0;
-    final unitsWithPath = await parseDirectoryWithPaths('.');
+    final unitsWithPath = await parseDirectoryWithPaths('lib');
     filesChecked = unitsWithPath.length;
 
     for (final rule in rules) {

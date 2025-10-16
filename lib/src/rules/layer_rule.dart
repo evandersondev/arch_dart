@@ -23,14 +23,14 @@ class LayerRule extends ArchRule {
 
     switch (validationType) {
       case LayerValidationType.structure:
-        await _checkStructure('.', violations);
+        await _checkStructure('lib', violations);
         break;
       case LayerValidationType.dependencies:
-        await _checkDependencies('.', violations);
+        await _checkDependencies('lib', violations);
         break;
       case LayerValidationType.both:
-        await _checkStructure('.', violations);
-        await _checkDependencies('.', violations);
+        await _checkStructure('lib', violations);
+        await _checkDependencies('lib', violations);
         break;
     }
 
@@ -40,15 +40,25 @@ class LayerRule extends ArchRule {
   }
 
   Future<void> _checkStructure(String rootDir, List<String> violations) async {
-    final directory = Directory(rootDir);
+    final rootDirectory = Directory(rootDir);
+    if (!await rootDirectory.exists()) {
+      // Se o diretório raiz (ex: 'lib') não existir, não há o que checar.
+      return;
+    }
+    final directory = rootDirectory;
     final existingLayers = <String>[];
 
     // Find existing layers
     await for (final entity in directory.list()) {
       if (entity is Directory) {
-        final layerName = p.basename(entity.path);
-        if (layers.contains(layerName)) {
-          existingLayers.add(layerName);
+        final dirName = p.basename(entity.path);
+        if (layers.contains(dirName)) {
+          existingLayers.add(dirName);
+        } else if (!_isCommonDirectory(dirName)) {
+          // Report any directory that is not in the allowed list and not a common ignored one.
+          violations.add(
+            'Unexpected directory "$dirName" found in "lib/". Only directories defined in the rule are allowed.',
+          );
         }
       }
     }
@@ -72,7 +82,12 @@ class LayerRule extends ArchRule {
       layerHierarchy[layers[i]] = i;
     }
 
-    final directory = Directory(rootDir);
+    final rootDirectory = Directory(rootDir);
+    if (!await rootDirectory.exists()) {
+      // Se o diretório raiz (ex: 'lib') não existir, não há o que checar.
+      return;
+    }
+    final directory = rootDirectory;
 
     await for (final entity in directory.list(recursive: true)) {
       if (entity is File && entity.path.endsWith('.dart')) {
@@ -156,29 +171,30 @@ class LayerRule extends ArchRule {
     return imports;
   }
 
-  // bool _isCommonDirectory(String dirName) {
-  //   const commonDirs = {
-  //     '.dart_tool',
-  //     '.git',
-  //     '.idea',
-  //     '.vscode',
-  //     'build',
-  //     'node_modules',
-  //     'test',
-  //     'tests',
-  //     'example',
-  //     'examples',
-  //     'doc',
-  //     'docs',
-  //     'assets',
-  //     'web',
-  //     'android',
-  //     'ios',
-  //     'linux',
-  //     'macos',
-  //     'windows',
-  //   };
+  bool _isCommonDirectory(String dirName) {
+    const commonDirs = {
+      '.dart_tool',
+      '.git',
+      '.idea',
+      '.vscode',
+      'build',
+      'node_modules',
+      'test',
+      'tests',
+      'example',
+      'examples',
+      'doc',
+      'docs',
+      'assets',
+      'web',
+      'android',
+      'ios',
+      'linux',
+      'macos',
+      'windows',
+    };
 
-  //   return commonDirs.contains(dirName) || dirName.startsWith('.');
-  // }
+    // Ignora diretórios comuns e qualquer diretório que comece com '.'
+    return commonDirs.contains(dirName) || dirName.startsWith('.');
+  }
 }

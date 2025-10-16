@@ -14,7 +14,7 @@ class ImplementInterfaceEndingRule extends ArchRule {
 
   @override
   Future<void> check() async {
-    final unitsWithPath = await parseDirectoryWithPaths('.');
+    final unitsWithPath = await parseDirectoryWithPaths('lib');
     final violations = <String>[];
 
     for (final entry in unitsWithPath.entries) {

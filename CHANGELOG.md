@@ -1,3 +1,7 @@
+## 0.0.4
+
+- Fix strict folder init tests to /lib and methods requireAllLayers and allowMissingLayers.
+
 ## 0.0.3
 
 - Remove flutter dependencies
