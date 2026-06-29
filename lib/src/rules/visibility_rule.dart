@@ -177,7 +177,7 @@ class VisibilityRule extends ArchRule {
     // Verificar se a classe segue o padrão de record
     // Isso pode ser customizado baseado nas suas convenções
     return declaration.name.lexeme.endsWith('Record') ||
-        declaration.extendsClause?.superclass.name2.lexeme == 'Record';
+        declaration.extendsClause?.superclass.name.lexeme == 'Record';
   }
 
   String _getModifierName() {

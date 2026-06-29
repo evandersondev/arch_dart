@@ -62,7 +62,7 @@ class ImplementRule extends ArchRule {
 
     bool hasMatchingInterface = false;
     for (final interface in implementsClause.interfaces) {
-      final interfaceName = interface.name2.lexeme;
+      final interfaceName = interface.name.lexeme;
       if (interfaceName.endsWith(interfaceNameSuffix!)) {
         hasMatchingInterface = true;
         break;
@@ -87,7 +87,7 @@ class ImplementRule extends ArchRule {
 
     bool hasAllowedInterface = false;
     for (final interface in implementsClause.interfaces) {
-      final interfaceName = interface.name2.lexeme;
+      final interfaceName = interface.name.lexeme;
       if (allowedInterfaces!.contains(interfaceName)) {
         hasAllowedInterface = true;
         break;
@@ -112,7 +112,7 @@ class ImplementRule extends ArchRule {
 
     bool implementsRequired = false;
     for (final interface in implementsClause.interfaces) {
-      if (interface.name2.lexeme == interfaceName) {
+      if (interface.name.lexeme == interfaceName) {
         implementsRequired = true;
         break;
       }
